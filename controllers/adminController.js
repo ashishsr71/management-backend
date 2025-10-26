@@ -111,3 +111,19 @@ exports.getReportSummary = async (req, res) => {
     res.status(500).json({ message: 'Error generating reports', error: error.message });
   }
 };
+
+exports.getUsers = async (req, res) => {
+  try {
+    const query = {};
+    
+    // Check for query param ?role=officer
+    if (req.query.role) {
+      query.role = req.query.role;
+    }
+
+    const users = await User.find(query).select('-passwordHash'); // Find users, remove password
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
