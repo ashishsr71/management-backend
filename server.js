@@ -22,7 +22,7 @@ app.use('/api/complaints', require('./routes/complaintRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
 // We should also add a simple route for departments
 // app.use('/api/departments', require('./routes/departmentRoutes'));
-
+app.use('/api/departments', require('./routes/departmentRoutes'));
 // Serve uploaded files statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
